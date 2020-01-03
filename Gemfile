@@ -40,6 +40,8 @@ group :development do
   # Linter
   gem "rubocop", "< 0.68"
   gem "rubocop-github"
+  # Document
+  gem "yard"
 end
 
 group :test do
