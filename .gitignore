@@ -78,3 +78,7 @@ yarn-debug.log*
 yarn-debug.log*
 .yarn-integrity
 coverage/
+
+# Ignoring javascript's generated documents
+docs/*
+!docs/.keep

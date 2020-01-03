@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "unit": "cross-env BABEL_ENV=test karma start test/js/karma.conf.js --single-run",
-    "lint": "eslint --ext .js,.vue --fix app/javascript"
+    "lint": "eslint --ext .js,.vue --fix app/javascript",
+    "docs": "jsdoc -d docs -c .jsdoc.js"
   },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
@@ -28,6 +29,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.1.2",
+    "jsdoc": "^3.6.3",
+    "jsdoc-vuejs": "^3.0.8",
     "karma": "^4.4.1",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage": "^2.0.1",
