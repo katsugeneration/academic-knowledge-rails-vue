@@ -5,6 +5,12 @@ require "test_helper"
 require "minitest/autorun"
 
 class AcademicSearchControllerTest < ActionDispatch::IntegrationTest
+  test "return top from index" do
+    get root_url
+    assert_response :success
+    assert_select "h1", "Academic Search"
+  end
+
   test "return api response" do
     AcademicSearchController.stub(:search_api, {res: "OK"}) do
       get academic_search_index_url
