@@ -31,5 +31,31 @@ module AcademicSearch
         return {}
       end
     end
+
+    # Search top k references papers from expr matched papers
+    #
+    # @param expr [String] Expression string whoes cited papers.
+    # @param count [Int] Number of returning papres.
+    #
+    # @return [Hash] json parsed objects.
+    def search_top_references(expr, count = 10)
+      papers = search_api(expr, 1000)
+
+      sorted_referenced_papers = papers["entities"].inject([]) { |result, arr|
+        if arr["RId"].instance_of?(Array)
+          result + arr["RId"]
+        else
+          result
+        end
+      }.group_by(&:itself)
+      .map { |key, value| [key, value.count] }
+      .sort { |(k1, v1), (k2, v2)| v2 <=> v1 }
+
+      request = "Or(#{sorted_referenced_papers[0, count].map { |key, value|
+        "Id=#{key}"
+      }.join(",")})"
+
+      return search_api(request, count)
+    end
   end
 end

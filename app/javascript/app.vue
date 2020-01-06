@@ -8,6 +8,10 @@
       v-model="nums"
       type="number"
     >
+    <input
+      v-model="is_top_referenced"
+      type="checkbox"
+      />
     <button @click="search">
       Search
     </button>
@@ -62,6 +66,7 @@ export default {
     return {
       expr: '',
       nums: 10,
+      is_top_referenced: false,
       papers: null
     }
   },
@@ -70,7 +75,8 @@ export default {
       axios.get('/academic_search', {
         params: {
           expr: this.expr,
-          nums: this.nums
+          nums: this.nums,
+          is_top_referenced: this.is_top_referenced
         }
       })
         .then(response => {
