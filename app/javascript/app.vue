@@ -10,7 +10,11 @@
     <table>
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Title</th>
+          <th>Conference</th>
+          <th>Journal</th>
+          <th>Published Year</th>
+          <th>Cited</th>
           <th>Link</th>
         </tr>
       </thead>
@@ -20,7 +24,19 @@
           :key="paper.Id"
         >
           <td>
-            {{ paper.Id }}
+            {{ paper.Ti }}
+          </td>
+          <td>
+            {{ ('C' in paper) ? paper.C.CN : '' }}
+          </td>
+          <td>
+            {{ ('J' in paper) ? paper.J.JN : '' }}
+          </td>
+          <td>
+            {{ paper.Y }}
+          </td>
+          <td>
+            {{ paper.CC }}
           </td>
           <td>
             <a
@@ -52,7 +68,6 @@ export default {
         }
       })
         .then(response => {
-          console.log(response.data.entities)
           this.papers = response.data.entities
         })
         .catch(error => {

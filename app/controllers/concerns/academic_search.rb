@@ -13,7 +13,8 @@ module AcademicSearch
     #
     # @note This method use SUBSCRIPTION_KEY environment variable.
     def search_api(expr)
-      uri = URI.parse("https://api.labs.cognitive.microsoft.com/academic/v1.0/evaluate?expr=#{expr}&attributes=Id")
+      attributes = ["Id", "Ti", "RId", "CC", "C.CN", "J.JN", "Y"]
+      uri = URI.parse("https://api.labs.cognitive.microsoft.com/academic/v1.0/evaluate?expr=#{expr}&attributes=#{attributes.join(',')}")
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
 

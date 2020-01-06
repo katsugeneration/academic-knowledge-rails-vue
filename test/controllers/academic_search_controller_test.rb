@@ -25,5 +25,8 @@ class AcademicSearchControllerTest < ActionDispatch::IntegrationTest
     response = JSON.parse(@response.body)
     assert response.include?("entities")
     assert response["entities"][0].include?("Id")
+    assert response["entities"][0].include?("Ti")
+    assert response["entities"][0].include?("Y")
+    assert response["entities"][0].include?("CC")
   end
 end
