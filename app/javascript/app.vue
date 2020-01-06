@@ -28,7 +28,7 @@
           :key="paper.Id"
         >
           <td>
-            {{ paper.Ti }}
+            {{ paper.DN }}
           </td>
           <td>
             {{ ('C' in paper) ? paper.C.CN : '' }}

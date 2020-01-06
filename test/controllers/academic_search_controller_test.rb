@@ -28,6 +28,7 @@ class AcademicSearchControllerTest < ActionDispatch::IntegrationTest
     assert response["entities"][0].include?("Ti")
     assert response["entities"][0].include?("Y")
     assert response["entities"][0].include?("CC")
+    assert response["entities"][0].include?("DN")
   end
 
   test "number of return" do
