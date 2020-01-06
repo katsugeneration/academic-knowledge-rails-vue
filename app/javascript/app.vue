@@ -4,6 +4,10 @@
       v-model="expr"
       type="text"
     >
+    <input
+      v-model="nums"
+      type="number"
+    >
     <button @click="search">
       Search
     </button>
@@ -40,7 +44,7 @@
           </td>
           <td>
             <a
-              :href='"https://academic.microsoft.com/paper/" + paper.Id + "/reference/search"'
+              :href="'https://academic.microsoft.com/paper/' + paper.Id + '/reference/search'"
               target="_blank"
             >goto</a>
           </td>
@@ -57,6 +61,7 @@ export default {
   data: function () {
     return {
       expr: '',
+      nums: 10,
       papers: null
     }
   },
@@ -64,7 +69,8 @@ export default {
     search: function () {
       axios.get('/academic_search', {
         params: {
-          expr: this.expr
+          expr: this.expr,
+          nums: this.nums
         }
       })
         .then(response => {

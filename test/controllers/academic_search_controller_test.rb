@@ -29,4 +29,12 @@ class AcademicSearchControllerTest < ActionDispatch::IntegrationTest
     assert response["entities"][0].include?("Y")
     assert response["entities"][0].include?("CC")
   end
+
+  test "number of return" do
+    get academic_search_index_url, params: {expr: "Composite(C.CN=='acl')", nums: 1}
+    assert_response :success
+    response = JSON.parse(@response.body)
+    assert response.include?("entities")
+    assert_equal 1, response["entities"].length
+  end
 end
